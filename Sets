@@ -1,156 +1,3 @@
-
-#include <algorithm> // Provides copy function
-#include <cassert>   // Provides assert function
-#include <iostream>
-#include "set.h"
-
-
-using namespace HW_ASSIGNMENT_03_ALUEBKE;
-using std::cout;
-using std::cin;
-using std::endl;
-
-int main(int argc, char **argv)
-{
-	set sample;
-	
-	return 0;
-}
-
-
-void get_numbers(set& numbers)
-{
-    int user_input;
-
-   	int user_input1;
-	int user_input2;
-	int user_input3;
-	
-	cout << "Please enter a first number" << endl;
-	cin >> user_input1;
-	
-	cout << "Please enter a second number" << endl;
-	cin >> user_input2;
-	
-	cout << "Please enter a third number" << endl;
-	cin >> user_input3;
-	
-	numbers.insert(user_input1);
-	numbers.insert(user_input2);
-	numbers.insert(user_input3);
-	
-
-}
-
-// FILE: set.cxx
-// CLASS IMPLEMENTED: set (see set.h for documentation)
-// INVARIANT for the set class:
-//   1. The number of items in the set is in the member variable used;
-//   2. For an empty set, we do not care what is stored in any of data; for a
-//      non-empty set the items in the set are stored in data[0] through
-//      data[used-1], and we don't care what's in the rest of data.
-//   3. In any given set, the same number cannot occur twice.
-
-#include <algorithm> // Provides copy function
-#include <cassert>   // Provides assert function
-#include <<iostream>
-#include 'set.h'
-
-using namespace std;
-
-namespace HW_ASSIGNMENT_03_ALUEBKE
-{
-    const set::size_type set::CAPACITY;
-    
-    set::size_type set::erase(const value_type& target)
-    {
-		size_type index = 0;
-		size_type many_removed = 0;
-
-		while (index < used)
-		{
-			if (data[index] == target)
-			{
-			--used;
-			data[index] = data[used];
-			++many_removed;
-			}
-			else
-			++index;
-		}
-
-		return many_removed;
-    }
-
-    bool set::erase_one(const value_type& target)
-    {
-		size_type index; // The location of target in the data array    
-
-		// First, set index to the location of target in the data array,
-		// which could be as small as 0 or as large as used-1. If target is not
-		// in the array, then index will be set equal to used.
-		index = 0; 
-		while ((index < used) && (data[index] != target))
-			++index;
-
-		if (index == used)
-			return false; // target isn’t in the set, so no work to do.
-
-		// When execution reaches here, target is in the set at data[index].
-		// So, reduce used by 1 and copy the last item onto data[index].
-		--used;
-		data[index] = data[used];    
-		return true;
-    }
-
-    void set::insert(const value_type& entry)
-    // Library facilities used: cassert
-    {   
-        assert(size( ) < CAPACITY);
-		assert(!contains(entry));
-
-        data[used] = entry;
-	++used;
-    }
-
-    void set::operator +=(const set& addend)
-    // Library facilities used: algorithm, cassert
-    {
-	assert(size( ) + addend.size( ) <= CAPACITY);
-	
-	copy(addend.data, addend.data + addend.used, data + used);
-	used += addend.used;
-    }
-
-    set::bool contains(const value_type& target) const;
-    {
-        size_type i;
-
-        for (i = 0; i < used; ++i)
-		{
-            if (target == data[i])
-			{
-				cout << "Error! This is already in the set!" << endl;
-				return;
-			}
-		}
-        return false;
-    }
-
-    set operator +(const set& b1, const set& b2)
-    // Library facilities used: cassert
-    {
-        set answer;
-
-        assert(b1.size( ) + b2.size( ) <= set::CAPACITY);
-
-        answer += b1; 
-        answer += b2;
-        return answer;
-    }
-	
-}
-
 /*
 * Class: CS 3304/07
 * Term: Fall 2016
@@ -231,6 +78,7 @@ namespace HW_ASSIGNMENT_03_ALUEBKE
         bool erase_one(const value_type& target);
         void insert(const value_type& entry);
         void operator +=(const set& addend);
+		void print();
         // CONSTANT MEMBER FUNCTIONS
         size_type size( ) const { return used; }
         bool contains(const value_type& target) const;
@@ -242,4 +90,193 @@ namespace HW_ASSIGNMENT_03_ALUEBKE
 }	
 
 #endif
+
+// FILE: set.cxx
+// CLASS IMPLEMENTED: set (see set.h for documentation)
+// INVARIANT for the set class:
+//   1. The number of items in the set is in the member variable used;
+//   2. For an empty set, we do not care what is stored in any of data; for a
+//      non-empty set the items in the set are stored in data[0] through
+//      data[used-1], and we don't care what's in the rest of data.
+//   3. In any given set, the same number cannot occur twice.
+
+#include <algorithm> // Provides copy function
+#include <cassert>   // Provides assert function
+#include <iostream>
+#include "set.h"
+
+using namespace std;
+
+namespace HW_ASSIGNMENT_03_ALUEBKE
+{
+    const set::size_type set::CAPACITY;
+    
+    set::size_type set::erase(const value_type& target)
+    {
+		size_type index = 0;
+		size_type many_removed = 0;
+
+		while (index < used)
+		{
+			if (data[index] == target)
+			{
+			--used;
+			data[index] = data[used];
+			++many_removed;
+			}
+			else
+			++index;
+		}
+
+		return many_removed;
+    }
+
+    bool set::erase_one(const value_type& target)
+    {
+		size_type index; // The location of target in the data array    
+
+		// First, set index to the location of target in the data array,
+		// which could be as small as 0 or as large as used-1. If target is not
+		// in the array, then index will be set equal to used.
+		index = 0; 
+		while ((index < used) && (data[index] != target))
+			++index;
+
+		if (index == used)
+			return false; // target isn’t in the set, so no work to do.
+
+		// When execution reaches here, target is in the set at data[index].
+		// So, reduce used by 1 and copy the last item onto data[index].
+		--used;
+		data[index] = data[used];    
+		return true;
+    }
+
+    void set::insert(const value_type& entry)
+    // Library facilities used: cassert
+    {   
+        assert(size( ) < CAPACITY);
+		
+		if (contains(entry))
+		{
+			cout << "Error! Set cannot have two of the same values." << endl;
+			return;
+		}
+		else
+		{
+			data[used] = entry;
+			++used;	
+		}
+    }
+
+    void set::operator +=(const set& addend)
+    // Library facilities used: algorithm, cassert
+    {
+	assert(size( ) + addend.size( ) <= CAPACITY);
+	
+	copy(addend.data, addend.data + addend.used, data + used);
+	used += addend.used;
+    }
+
+    bool set::contains(const value_type& target) const
+    {
+        size_type i;
+
+        for (i = 0; i < used; i++)
+		{
+            if (target == data[i])
+			{
+				cout << "Error! This is already in the set!" << endl;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+        
+    }
+
+    set operator +(const set& b1, const set& b2)
+    // Library facilities used: cassert
+    {
+        set answer;
+
+        assert(b1.size( ) + b2.size( ) <= set::CAPACITY);
+
+        answer += b1; 
+        answer += b2;
+        return answer;
+    }
+	
+	void set::print() 
+	{
+		for (int i = used; i--;)
+		{
+			cout << data[i] << ", ";
+		}
+		cout << endl;
+	}
+	
+}
+
+#include <algorithm> // Provides copy function
+#include <cassert>   // Provides assert function
+#include <iostream>
+#include "set.h"
+
+
+using namespace HW_ASSIGNMENT_03_ALUEBKE;
+using namespace std;
+
+
+int main(int argc, char **argv)
+{
+	set sample1;
+	set sample2;
+	
+	int sample1_inp1;
+	int sample1_inp2;
+	int sample1_inp3;
+	
+	int sample2_inp1;
+	int sample2_inp2;
+	int sample2_inp3;
+	
+	// Ask user for first set's numbers.
+	
+	cout << "Please enter first set's FIRST number. " << endl;
+	cin >> sample1_inp1;
+	
+	cout << "Please enter first set's SECOND number. " << endl;
+	cin >> sample1_inp2;
+	
+	cout << "Please enter first set's THIRD number. " << endl;
+	cin >> sample1_inp3;
+	
+	sample1.insert(sample1_inp1);
+	sample1.insert(sample1_inp2);
+	sample1.insert(sample1_inp3);
+	
+	// Ask user for second set's numbers.
+	
+	cout << "Please enter second set's FIRST number. " << endl;
+	cin >> sample2_inp1;
+	
+	cout << "Please enter second set's SECOND number. " << endl;
+	cin >> sample2_inp2;
+	
+	cout << "Please enter second set's THIRD number. " << endl;
+	cin >> sample2_inp3;
+	
+	sample2.insert(sample2_inp1);
+	sample2.insert(sample2_inp2);
+	sample2.insert(sample2_inp3);
+	
+	sample1.print();
+	sample2.print();
+	
+	return 0;
+}
+
 
