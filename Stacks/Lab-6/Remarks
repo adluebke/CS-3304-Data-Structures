@@ -1,0 +1,8 @@
+"The purpose of this lab is to help reinforce stack concepts in C++. Specifically, the lab is to write a C++ program which will evaluate a post-fix expression.The 3 major components of the program are
+•get the postfix expression
+•evaluate the postfix expression
+•display the results
+
+My suggestion is to implement the post-fix expression as a list of strings where each string is either an operand (integer in our case) or operator (4 standard arithmetic operators+, -, *, /). Use the STL stack class and listclass."
+
+I just used the STL to implement a stack, then created all the functions in my main file and executed them there.
