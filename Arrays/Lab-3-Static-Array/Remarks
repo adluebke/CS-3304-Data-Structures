@@ -2,6 +2,6 @@
 Specifically, the lab is to implement the sequence class from chapter 3.  
 You should use the author's header file and the author's test program (sequence_exam.cpp)."
 
-A sequence being a structure that contains an index which tracks traversal through the array. It
+A sequence being a structure that contains a cursor which tracks traversal through the array. It
 also has functions that allow the user to insert an element before the cursor and after it; as well as
-other typical functions like remove.
+other typical functions like remove and next().
