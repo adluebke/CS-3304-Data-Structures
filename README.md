@@ -6,7 +6,6 @@ programming and their various applications. Examples include: arrays, various co
 pointers, templates, iterators, the STL, stacks, queues, trees, balanced trees, searching, and sorting.
 
 The textbook utilized in this course is:
-
 Data Structures and Other Objects Using C++ - 4th Edition
 By: Michael Main and Walter Savitch
 ISBN: 978-0-13-212948-0
