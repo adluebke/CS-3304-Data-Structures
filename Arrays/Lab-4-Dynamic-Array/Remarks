@@ -3,3 +3,6 @@ Specifically, the lab to repeat the lab from last week except to use a dynamic a
 Note that there is no upper bound on the size of the sequence. You need to use the 
 author's files sequence2.h and sequence_exam2.cpp"
 
+Please refer to the remarks file under "Lab 3" for further elaboration on what a sequence is.
+The key difference for this lab being the use of pointers to manually resize an array if the
+used spaces exceed the max capacity of the array.
