@@ -1,0 +1,8 @@
+"The purpose of this lab is to help reinforce heap and priority queue implementations in C++.
+Specifically, the lab is to problem 2 on page 582 of the text. Note that you will need to implement 
+a heap class (use a vector instead of a dynamic array) and then use the heap class to implement a priority queue.
+You need to construct a test program tohelp test the correctness of your code.You need to use heap.hand priority_queue.h"
+
+The problem in the book has me make a traditional priority queue using heaps. The header files heap.h and priority_queue.h
+were provided, however, the implementation files and the test files were done by me. The book tells us to use arrays, but the
+instructor specified that we use vectors instead; as noted above.
