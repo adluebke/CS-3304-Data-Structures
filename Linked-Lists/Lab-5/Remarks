@@ -1,0 +1,11 @@
+"The purpose of this lab is to help reinforce linked list concepts in C++.
+Specifically, the lab to repeat the "sequence" lab except to use a linked list.
+Note that there is no upper bound on the size of the sequence. You need to use author's 
+header file and test file: sequence3.h and sequence_exam3.cpp."
+
+As stated above, the header file was provided as well as the test file. Everything else was done
+by me. Other than that, it is the same concept as Labs 3 and 4; only we utilize a linked list
+instead.
+
+
+
