@@ -1,0 +1,10 @@
+"The purpose of this lab is to help reinforce tree implementations in C++.
+Specifically, the lab is to do problem #8 on page 538 of the text."
+
+pg. 538, problem #8:
+
+"Write a function that takes a binary search tree as input and produces a linked list of the entries,
+with the entries sorted (smallest entries at the front of the list and largest entries at the back)."
+
+The bst.h and bst.template files were written for us on this lab. We just needed to alter them and create
+a main file that met the criteria.
