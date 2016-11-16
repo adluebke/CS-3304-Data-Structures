@@ -1,0 +1,5 @@
+"The purpose of this lab is to help reinforce container class concepts in C++.
+Specifically, the lab to repeat the lab from last week except to use a dynamic array.
+Note that there is no upper bound on the size of the sequence. You need to use the 
+author's files sequence2.h and sequence_exam2.cpp"
+
