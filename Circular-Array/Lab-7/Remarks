@@ -1,0 +1,6 @@
+"The purpose of this lab is to help reinforce linear data structure implementations in C++.
+Specifically, the lab is to construct a C++ implementation of a static deque class.
+The header file that we will use is deque.h."
+
+As noted above, only the deque.h file was provided to me. The implmentation file and the main
+file were written by me. However, we had to use a .template file to implement the deque class.
