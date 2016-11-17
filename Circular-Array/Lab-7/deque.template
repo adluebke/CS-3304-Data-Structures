@@ -1,4 +1,11 @@
-
+/*
+* Class: CS 3304/section07
+* Term: Fall 2016
+* Name: Andrew Luebke
+* Instructor: Monisha Verma
+* Assignment: Lab 7
+ */
+ 
 #include <iostream>
 #include <cstdlib>
 #include <cassert>
