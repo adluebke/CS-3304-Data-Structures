@@ -1,0 +1,159 @@
+
+#include <cassert>
+#include <iostream>
+
+using namespace std;
+
+
+namespace LAB_08_ALUEBKE
+{
+
+template <typename T>
+bst<T>::bst(): root (NULL), count (0)
+{
+
+}
+
+template <typename T>
+bst<T>::~bst()
+{
+    tree_clear (root);
+}
+
+template <typename T>
+bst<T>::bst(const bst<T>& t)
+{
+    root = tree_copy (t.root);
+    count = t.count;
+}
+
+template <typename T>
+bst<T>& bst<T>::operator==(const bst<T>& t)
+{
+    if (this != &t)
+    {
+        tree_clear (root);
+        root = tree_copy (t.root);
+        count = t.count;
+    }
+    return *this;
+}
+
+template <typename T>
+unsigned int bst<T>::size() const
+{
+    return count;
+}
+
+template <typename T>
+bool bst<T>::is_empty() const
+{
+    return size() == 0;
+}
+
+template <typename T>
+void bst<T>::insert(const T& item)
+{
+    binary_tree_node<T>* current = root;
+    binary_tree_node<T>* prev = NULL;
+    while (current != NULL && current -> data() != item)
+    {
+        prev = current;
+        if (item < current -> data())
+            current = current -> left();
+        else
+            current = current -> right();
+    }
+    if (current == NULL)
+    {
+        binary_tree_node<T>* temp = new binary_tree_node<T> (item);
+        if (prev == NULL)
+            root = temp;
+        else if (item < prev -> data())
+            prev -> set_left (temp);
+        else
+            prev -> set_right (temp);
+		count++;
+    }
+}
+
+
+
+template <typename T>
+void bst<T>::remove(const T& item)
+{
+    binary_tree_node<T>* current = root;
+    binary_tree_node<T>* prev = NULL;
+    while (current != NULL && current -> data() != item)
+    {
+        prev = current;
+        if (item < current -> data())
+            current = current -> left();
+        else
+            current = current -> right();
+    }
+    if (current != NULL)
+    {
+        if (current -> right() == NULL)
+        {
+            binary_tree_node<T>* temp = current;
+            if (prev == NULL)
+                root = current -> left();
+            else if (prev -> data() < current -> data())
+                prev -> set_right (current -> left());
+            else
+                prev -> set_left (current -> left());
+            delete (temp);
+        }
+        else
+        {
+            binary_tree_node<T>* p = current -> right();
+            binary_tree_node<T>* prev_p = current;
+            while (p -> left() != NULL)
+            {
+                prev_p = p;
+                p = p -> left();
+            }
+            binary_tree_node<T>* temp = p;
+            if (prev_p -> data() < p -> data())
+                prev_p -> set_right (p -> right());
+            else
+                prev_p -> set_left(p -> right());
+            current -> set_data (p -> data());
+            delete temp;
+        }
+	count--;
+    }
+}
+
+template <typename T>
+bool bst<T>::contains(const T& item)
+{
+    binary_tree_node<T>* current = root;
+    while (current != NULL && current -> data() != item)
+        if (item < current -> data())
+            current = current -> left();
+        else
+            current = current -> right();
+    return current != NULL;
+}
+
+template <typename Process, typename T>
+void inorder(Process f, const bst<T>& t)
+{
+    inorder (f, t.root);
+}
+
+template <typename Process, typename T>
+void preorder(Process f, const bst<T>& t)
+{
+    preorder (f, t.root);
+}
+
+template <typename Process, typename T>
+void postorder(Process f, const bst<T>& t)
+{
+    postorder (f, t.root);
+}
+
+}
