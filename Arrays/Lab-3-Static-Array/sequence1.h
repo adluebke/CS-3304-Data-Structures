@@ -1,13 +1,4 @@
 
-
-/*
-* Class: CS 3304/section07
-* Term: Fall 2016
-* Name: Andrew Luebke
-* Instructor: Monisha Verma
-* Assignment: Lab 3
- */
-
 // TYPEDEFS and MEMBER CONSTANTS for the sequence class:
 //   typedef ____ value_type
 //     sequence::value_type is the data type of the items in the sequence. It
