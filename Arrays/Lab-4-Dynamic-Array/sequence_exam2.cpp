@@ -1,11 +1,4 @@
 
-/*
-* Class: CS 3304/section07
-* Term: Fall 2016
-* Name: Andrew Luebke
-* Instructor: Monisha Verma
-* Assignment: Lab 4
- */
 // FILE: sequence_exam2.cxx
 // Written by: Michael Main (main@colorado.edu) - Oct 29, 1997
 // Non-interactive test program for the sequence class using a dynamic array,
