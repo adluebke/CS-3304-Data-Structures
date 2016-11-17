@@ -1,3 +1,11 @@
+/*
+* Class: CS 3304/section07
+* Term: Fall 2016
+* Name: Andrew Luebke
+* Instructor: Monisha Verma
+* Assignment: Lab 8
+ */
+
 #include <iostream>
 #include "bst.h"
 #include "node2.h"
