@@ -1,3 +1,11 @@
+/*
+* Class: CS 3304/section07
+* Term: Fall 2016
+* Name: Andrew Luebke
+* Instructor: Monisha Verma
+* Assignment: Lab 5
+ */
+
 #include <cstdlib>  // Provides size_t
 #include <iostream>
 #include <cassert>
