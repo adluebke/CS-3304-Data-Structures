@@ -1,0 +1,249 @@
+
+#include <iostream>
+#include <cstdlib>
+#include <cassert>
+#include "deque.h"
+
+using namespace std;
+
+namespace LAB_07_ALUEBKE
+{
+    template <typename T>
+	deque<T>::deque()
+    {
+        count = 0;
+        first = 0;
+        last = 0;
+    }
+
+	template <typename T>
+	T& deque<T>::front()
+	{
+		assert(!empty());
+
+		return data[first];
+	}
+
+	template <typename T>
+	T deque<T>::front() const
+	{
+		assert(!empty());
+
+		return data[first];
+	}
+
+	template <typename T>
+	T& deque<T>::back()
+	{
+		assert(!empty());
+
+		return data[last];
+	}
+
+	template <typename T>
+	T deque<T>::back() const
+	{
+		assert(!empty());
+
+		return data[last];
+	}
+
+	template <typename T>
+	void deque<T>::push_front(const T& entry)
+	{
+		assert(!full());
+
+		if(empty())
+		{
+			data[0] = entry;
+			first = 0;
+			last = 0;
+		}
+		else if(first == 0)
+		{
+			first = 9;
+			data[first] = entry;
+		}
+		else
+		{
+			first--;
+			data[first] = entry;
+		}
+
+		count++;
+	}
+
+	template <typename T>
+	void deque<T>::push_back (const T& entry)
+	{
+		assert(!full());
+
+		if(empty())
+		{
+			data[0] = entry;
+			first = 0;
+			last = 0;
+		}
+		else if(last == 9)
+		{
+			last = 0;
+			data[last] = entry;
+		}
+		else
+		{
+			last++;
+			data[last] = entry;
+		}
+
+		count++;
+	}
+
+	template <typename T>
+	void deque<T>::pop_front ()
+	{
+		assert(!empty());
+
+		data[first] = 0;
+		first++;
+		count--;
+
+		if(first > 9)
+		{
+            first = 0;
+		}
+	}
+
+	template <typename T>
+	void deque<T>::pop_back ()
+	{
+		assert(!empty());
+
+		data[last] = 0;
+		last--;
+		count--;
+
+		if(last < 0)
+		{
+            last = 9;
+		}
+	}
+
+	template <typename T>
+	bool deque<T>::empty() const
+	{
+		if(count == 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	template <typename T>
+	bool deque<T>::full() const
+	{
+		if(count == CAPACITY)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	template <typename U>
+    bool operator == (const deque<U>& dq1, const deque<U>& dq2)
+    {
+    	if(dq1.size() == dq2.size())
+    	{
+    		size_t loops = 0;
+
+			while( loops < dq1.size())
+			{
+              size_t i = dq1.first;
+              size_t j = dq2.first;
+
+                if( i > 9)
+				{
+					i = 0;
+				}
+
+                if( j > 9)
+                {
+					j = 0;
+				}
+
+				if(dq1.data[i] != dq2.data[j])
+				{
+					return false;
+				}
+
+				i++;
+				j++;
+				loops++;
+
+
+			}
+
+			return true;
+    	}
+
+    	else
+    	{
+    		return false;
+    	}
+
+	}
+
+	template <typename U>
+	ostream& operator << (ostream& out, const deque<U>& dq)
+	{
+		for(size_t i = dq.first; i != (dq.last + 1); i++)
+			{
+				if( i > 9)
+				{
+					i = 0;
+				}
+
+				out << dq.data[i] << " ";
+			}
+
+			return out;
+	}
+
+	template <typename T>
+	typename deque<T>::size_type deque<T>::next_index (size_type i) const
+	{
+		if (i == 9)
+		{
+            i = 0;
+            return i;
+		}
+		else
+		{
+            i++;
+            return i;
+		}
+	}
+
+	template <typename T>
+	typename deque<T>::size_type deque<T>::prev_index (size_type i) const
+	{
+		if (i == 0)
+		{
+            i = 9;
+            return i;
+		}
+		else
+		{
+            i--;
+            return i;
+		}
+	}
+
+
+
+}
