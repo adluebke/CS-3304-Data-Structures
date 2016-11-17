@@ -1,10 +1,4 @@
-/*
-* Class: CS 3304/section07
-* Term: Fall 2016
-* Name: Andrew Luebke
-* Instructor: Monisha Verma
-* Assignment: Lab 4
- */
+
 // FILE: sequence2.h
 // CLASS PROVIDED: sequence (part of the namespace main_savitch_4)
 // There is no implementation file provided for this class since it is
